@@ -1,8 +1,8 @@
 <template>
-  <div >
+  <div>
     <el-container class="user_info">
-      <el-header>报名信息填写</el-header>
-      <el-main>
+      <el-header class="user_info_header"><img src="../assets/img/user_info_title.png" alt=""></el-header>
+      <el-main class="user_info_content">
         <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="100px" class="demo-ruleForm">
           <el-form-item label="昵称" prop="l_name">
             <el-input v-model="ruleForm.l_name"></el-input>
@@ -28,12 +28,12 @@
             <el-input v-model="ruleForm.IDCard"></el-input>
           </el-form-item>
           <el-form-item label="国家/地区" prop="country">
-            <el-select v-model="ruleForm.country" placeholder="请选择国家/地区" label-width="300px" >
+            <el-select v-model="ruleForm.country" placeholder="请选择国家/地区" label-width="300px">
               <el-option label="区域一" value="shanghai"></el-option>
               <el-option label="区域二" value="beijing"></el-option>
             </el-select>
           </el-form-item>
-          <el-form-item label="生日" prop="birthday"  >
+          <el-form-item label="生日" prop="birthday">
             <!--<el-input v-model="ruleForm.birthday"></el-input>-->
             <el-date-picker
               v-model="ruleForm.birthday"
@@ -42,7 +42,7 @@
               placeholder="选择日期">
             </el-date-picker>
           </el-form-item>
-          <el-form-item label="邮箱" prop="email" >
+          <el-form-item label="邮箱" prop="email">
             <el-input v-model="ruleForm.email"></el-input>
           </el-form-item>
           <el-form-item label="邮箱确认" prop="emailCheck">
@@ -54,16 +54,27 @@
               <el-option label="赛区二" value="beijing"></el-option>
             </el-select>
           </el-form-item>
+          <el-form-item prop="agree">
+            <el-checkbox  v-model="ruleForm.agree" label="我已仔细阅读并了解FXBV隐私政策" name="agree"></el-checkbox>
+          </el-form-item>
           <el-form-item>
-            <el-button type="primary" @click="submitForm('ruleForm')">立即创建</el-button>
-            <el-button @click="resetForm('ruleForm')">重置</el-button>
+            <!--<img type="primary" @click="submitForm('ruleForm')" src="../assets/img/submit.png" alt="">-->
+            <!--<el-button type="primary" @click="submitForm('ruleForm')"></el-button>-->
+            <!--<el-button @click="resetForm('ruleForm')">重置</el-button>-->
+          </el-form-item>
+          <el-form-item style="padding-bottom: 60px">
+            <img  @click="submitForm('ruleForm')" src="../assets/img/submit.png" alt="">
+            <!--<el-button type="primary" @click="submitForm('ruleForm')"></el-button>-->
+            <!--<el-button @click="resetForm('ruleForm')">重置</el-button>-->
           </el-form-item>
         </el-form>
       </el-main>
-      <el-footer>风险警示：
-        保证金外汇、差价合约(CFD)交易等金融衍生品投资具有高风险，可能导致您损失本金。因此，您所承担的亏损风险不应超过您的承受能力范围，请确保知悉其中所涉的一切风险。保证金外汇和杠杠化产品并不适合所有投资者，在交易前，请谨慎考虑您的经验水平、投资目标以及财政状况等，如有必要请寻求独立财务建议。客户有责任确保他/她所居住国家法律要求允许其使用FXBV品牌提供的服务。点击此处阅览完整的风险披露。
-      </el-footer>
+
     </el-container>
+    <div class="footer_warn">
+      风险警示：<br>
+      保证金外汇、差价合约(CFD)交易等金融衍生品投资具有高风险，可能导致您损失本金。因此，您所承担的亏损风险不应超过您的承受能力范围，请确保知悉其中所涉的一切风险。保证金外汇和杠杠化产品并不适合所有投资者，在交易前，请谨慎考虑您的经验水平、投资目标以及财政状况等，如有必要请寻求独立财务建议。客户有责任确保他/她所居住国家法律要求允许其使用FXBV品牌提供的服务。点击此处阅览完整的风险披露。
+    </div>
   </div>
 </template>
 
@@ -80,6 +91,13 @@ export default {
         callback()
       }
     }
+    let isAgree = (rule, value, callback) => {
+      if (value === false) {
+        callback(new Error('请仔细阅读并了解FXBV隐私政策'))
+      } else {
+        callback()
+      }
+    }
     return {
       ruleForm: {
         l_name: '',
@@ -91,7 +109,8 @@ export default {
         birthday: '',
         email: '',
         emailCheck: '',
-        area: ''
+        area: '',
+        agree: false
       },
       rules: {
         name: [
@@ -111,11 +130,15 @@ export default {
           {min: 18, max: 18, message: '请输入正确的身份证号码', trigger: 'blur'}
         ],
         email: [
-          { required: true, message: '请输入邮箱地址', trigger: 'blur' },
-          { type: 'email', message: '请输入正确的邮箱地址', trigger: ['blur', 'change'] }
+          {required: true, message: '请输入邮箱地址', trigger: 'blur'},
+          {type: 'email', message: '请输入正确的邮箱地址', trigger: ['blur', 'change']}
+        ],
+        agree: [
+          {validator: isAgree, trigger: 'change'}
+          // { required: true, message: '请仔细阅读并了解FXBV隐私政策', trigger: 'change' }
         ],
         emailCheck: [
-          { validator: validatePass2, trigger: 'blur' }
+          {validator: validatePass2, trigger: 'blur'}
         ]
       },
       imageUrl: ''
@@ -181,11 +204,29 @@ export default {
     height: 178px;
     display: block;
   }
-  .user_info{
-    margin: 20px auto;
-    /*margin: 20px;*/
+
+  .user_info {
+    margin: 50px auto;
     background-color: #fff;
     width: 1100px;
+    /*padding-top: 50px;*/
     border-radius: 30px
+  }
+
+  .user_info_header {
+    margin: 80px auto;
+    padding-left: 100px;
+  }
+
+  .user_info_content {
+    width: 500px;
+    margin: 0 auto;
+  }
+
+  .footer_warn {
+    margin: 0 auto;
+    width: 1100px;
+    line-height: 2.5;
+    padding: 20px 0;
   }
 </style>

@@ -14,7 +14,9 @@
     </div>
     </div>
   </div>
-  <img style="width: 100%" src="../assets/img/main.jpg" alt="">
+  <div class="main_img">
+    <!--<img style="width: 100%" src="../assets/img/main.jpg" alt="">-->
+  </div>
 </div>
 </template>
 
@@ -26,12 +28,12 @@ export default {
     return {
       arr: [
         {
-          title: '创建账户',
-          url: '/user_info'
+          title: '活动说明',
+          url: '/service'
         },
         {
-          title: '在线客服',
-          url: '/service'
+          title: '创建账户',
+          url: '/user_info'
         },
         {
           title: '登录MyFXBV',
@@ -77,5 +79,15 @@ export default {
   }
   .active {
     background-color: #f9bd00;
+  }
+  .main_img{
+    background-color: #e2dad7;
+    background:url(../assets/img/main.jpg) no-repeat;
+    background-size: 100% auto;
+  }
+  .main_img:before{
+    content: "";
+    display: block;
+    padding-top: 38%;
   }
 </style>

@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <Myheader :page="idx" @openNew="openNew"></Myheader>
-    <router-view class="bg"></router-view>
+    <router-view></router-view>
   </div>
 </template>
 
@@ -32,15 +32,13 @@ export default {
   }
 
   body {
-    font-size: 14px;
-    font-family: Arial, serif, Helvetica, sans-serif, Times, '微软雅黑 Light', '宋体';
+    font-size: 16px;
+    font-family: "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
+    background-color: #e2dad7
   }
 
   a {
     display: block;
     text-decoration: none;
-  }
-  .bg{
-    background-color: #e2dad7;
   }
 </style>
