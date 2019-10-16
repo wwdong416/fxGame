@@ -14,7 +14,7 @@
     </div>
     </div>
   </div>
-  <div class="main_img">
+  <div class="main_img" @click="openPK()">
     <!--<img style="width: 100%" src="../assets/img/main.jpg" alt="">-->
   </div>
 </div>
@@ -49,6 +49,13 @@ export default {
   methods: {
     openNew (i) {
       this.$emit('openNew', i)
+    },
+    openPK () {
+      const that = this
+      that.$router.push({
+        path: '/PKGame',
+        name: 'PKGame'
+      })
     }
   }
 }

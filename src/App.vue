@@ -34,7 +34,8 @@ export default {
   body {
     font-size: 16px;
     font-family: "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
-    background-color: #e2dad7
+    background-color: #e2dad7;
+    min-width: 1100px;
   }
 
   a {
