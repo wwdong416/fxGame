@@ -24,40 +24,40 @@
     </el-header>
     <el-main>
       <div class="flexbox" >
-        <div class="fl sq" v-for="(item,index) in zone" :key="index" @click="getBonus(index)">{{item}}</div>
+        <div class="fl sq" :class="{activeTitle:index===current}" v-for="(item,index) in zone" :key="index" @click="getBonus(index)">{{item}}</div>
         <div class="clear"></div>
       </div>
       <div class="r_table mt40" >
-        <div class="r_table_ul">
-          <div class="fl r_table_l">名次</div>
-          <div class="fl r_table_r">奖金</div>
+        <div class="r_table_ul" v-for="(item,index) in zone_list"  :key="index">
+          <div class="fl r_table_l">{{item.ranking}}</div>
+          <div class="fl r_table_r">{{item.price}}</div>
           <div class="clear"></div>
         </div>
-        <div class="r_table_ul">
-          <div  class="fl r_table_l">第一名</div>
-          <div  class="fl r_table_r">$600</div>
-          <div class="clear"></div>
-        </div>
-        <div class="r_table_ul">
-          <div  class="fl r_table_l">第二名</div>
-          <div  class="fl r_table_r">$400</div>
-          <div class="clear"></div>
-        </div>
-        <div class="r_table_ul">
-          <div  class="fl r_table_l">第三名、第四名</div>
-          <div  class="fl r_table_r">$250</div>
-          <div class="clear"></div>
-        </div>
-        <div class="r_table_ul">
-          <div  class="fl r_table_l">第五名至第八名</div>
-          <div  class="fl r_table_r">$200</div>
-          <div class="clear"></div>
-        </div>
-        <div class="r_table_ul">
-          <div  class="fl r_table_l">幸运抽奖1名</div>
-          <div  class="fl r_table_r">$120</div>
-          <div class="clear"></div>
-        </div>
+        <!--<div class="r_table_ul">-->
+          <!--<div  class="fl r_table_l">第一名</div>-->
+          <!--<div  class="fl r_table_r">$600</div>-->
+          <!--<div class="clear"></div>-->
+        <!--</div>-->
+        <!--<div class="r_table_ul">-->
+          <!--<div  class="fl r_table_l">第二名</div>-->
+          <!--<div  class="fl r_table_r">$400</div>-->
+          <!--<div class="clear"></div>-->
+        <!--</div>-->
+        <!--<div class="r_table_ul">-->
+          <!--<div  class="fl r_table_l">第三名、第四名</div>-->
+          <!--<div  class="fl r_table_r">$250</div>-->
+          <!--<div class="clear"></div>-->
+        <!--</div>-->
+        <!--<div class="r_table_ul">-->
+          <!--<div  class="fl r_table_l">第五名至第八名</div>-->
+          <!--<div  class="fl r_table_r">$200</div>-->
+          <!--<div class="clear"></div>-->
+        <!--</div>-->
+        <!--<div class="r_table_ul">-->
+          <!--<div  class="fl r_table_l">幸运抽奖1名</div>-->
+          <!--<div  class="fl r_table_r">$120</div>-->
+          <!--<div class="clear"></div>-->
+        <!--</div>-->
       </div>
     </el-main>
   </el-container>
@@ -135,14 +135,34 @@ export default {
   name: 'service',
   data () {
     return {
+      current: 0,
       zone: [
         '$100赛区', '$500赛区', '$1000赛区'
       ],
       zone_list: [
         {
-          id: '0',
+          ranking: '名次',
+          price: '奖金'
+        },
+        {
           ranking: '第一名',
           price: '$600'
+        },
+        {
+          ranking: '第二名',
+          price: '$400'
+        },
+        {
+          ranking: '第三名、第四名',
+          price: '$250'
+        },
+        {
+          ranking: '第五名至第四名',
+          price: '$200'
+        },
+        {
+          ranking: '幸运抽奖1名',
+          price: '$120'
         }
       ],
       price_example: '   获奖举例：<br>\n' +
@@ -181,7 +201,75 @@ export default {
   },
   methods: {
     getBonus (id) {
-      console.log(id)
+      this.current = id
+      if (id === 0) {
+        this.zone_list = [
+          {
+            ranking: '名次',
+            price: '奖金'
+          }, {
+            ranking: '第一名',
+            price: '$600'
+          }, {
+            ranking: '第二名',
+            price: '$400'
+          }, {
+            ranking: '第三名、第四名',
+            price: '$250'
+          }, {
+            ranking: '第五名至第四名',
+            price: '$200'
+          }, {
+            ranking: '幸运抽奖1名',
+            price: '$120'
+          }
+        ]
+      } else if (id === 1) {
+        this.zone_list = [
+          {
+            ranking: '名次',
+            price: '奖金'
+          }, {
+            ranking: '第一名',
+            price: '$3000'
+          }, {
+            ranking: '第二名',
+            price: '$2000'
+          }, {
+            ranking: '第三名、第四名',
+            price: '$1250'
+          }, {
+            ranking: '第五名至第四名',
+            price: '$1000'
+          },
+          {
+            ranking: '幸运抽奖1名',
+            price: '$600'
+          }
+        ]
+      } else if (id === 2) {
+        this.zone_list = [
+          {
+            ranking: '名次',
+            price: '奖金'
+          }, {
+            ranking: '第一名',
+            price: '$6000'
+          }, {
+            ranking: '第二名',
+            price: '$4000'
+          }, {
+            ranking: '第三名、第四名',
+            price: '$2500'
+          }, {
+            ranking: '第五名至第四名',
+            price: '$2000'
+          }, {
+            ranking: '幸运抽奖1名',
+            price: '$1200'
+          }
+        ]
+      }
     }
   }
 }
@@ -224,6 +312,7 @@ export default {
   }
   .sq{
     margin: 0 20px;
+    cursor:pointer
   }
   .r_table{
     margin: 0 auto;
@@ -286,5 +375,9 @@ export default {
     align-items: center;
     -webkit-justify-content: center;
     justify-content: center;
+  }
+  .activeTitle{
+    color: #f95f02;
+    font-weight: bold;
   }
 </style>

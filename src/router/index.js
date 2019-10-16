@@ -2,11 +2,13 @@ import login from '../components/Login'
 import userinfo from '../components/User_info'
 import service from '../components/Service'
 import mymsg from '../components/MyMsg'
+import PKGame from '../components/PKGame'
 
 export const routes = [
   {path: '', name: 'service', component: service},
   {path: '/Login', name: 'login', component: login},
   {path: '/User_info', name: 'user_info', component: userinfo},
   {path: '/Service', name: 'service', component: service},
-  {path: '/Mymsg', name: 'myMsg', component: mymsg}
+  {path: '/Mymsg', name: 'myMsg', component: mymsg},
+  {path: '/PKGame', name: 'PKGame', component: PKGame}
 ]
