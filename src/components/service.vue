@@ -1,5 +1,6 @@
 <template>
 <div>
+  <headerTab></headerTab>
   <el-container class="user_info">
       <div class="user_info_content">
         <div class="u_c"><b>活动时间：</b>周一至周五北京时间19:00-20:00</div>
@@ -131,6 +132,7 @@
 </template>
 
 <script>
+import headerTab from './header'
 export default {
   name: 'service',
   data () {
@@ -198,6 +200,9 @@ export default {
       web_warn: ' 风险警示：<br>\n' +
         '      保证金外汇、差价合约(CFD)交易等金融衍生品投资具有高风险，可能导致您损失本金。因此，您所承担的亏损风险不应超过您的承受能力范围，请确保知悉其中所涉的一切风险。保证金外汇和杠杠化产品并不适合所有投资者，在交易前，请谨慎考虑您的经验水平、投资目标以及财政状况等，如有必要请寻求独立财务建议。客户有责任确保他/她所居住国家法律要求允许其使用FXBV品牌提供的服务。点击此处阅览完整的风险披露。\n'
     }
+  },
+  components: {
+    headerTab
   },
   methods: {
     getBonus (id) {

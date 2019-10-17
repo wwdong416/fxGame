@@ -1,10 +1,10 @@
 <template>
-<div>myMsg111</div>
+    <div></div>
 </template>
 
 <script>
 export default {
-  name: "myMsg'"
+  name: 'PK_result'
 }
 </script>
 

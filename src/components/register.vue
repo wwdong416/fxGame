@@ -1,5 +1,6 @@
 <template>
   <div>
+    <headerTab></headerTab>
     <el-container class="user_info">
       <el-header class="user_info_header"><img src="../assets/img/user_info_title.png" alt=""></el-header>
       <el-main class="user_info_content">
@@ -79,8 +80,12 @@
 </template>
 
 <script>
+import headerTab from './header'
 export default {
-  name: 'user_info',
+  name: 'register',
+  components: {
+    headerTab
+  },
   data () {
     var validatePass2 = (rule, value, callback) => {
       if (value === '') {

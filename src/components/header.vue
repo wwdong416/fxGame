@@ -7,7 +7,7 @@
     <div style="float: right;width:60%;text-align: right">
     <div class="nav-item" v-for="(item,index) in arr" :key="index" @click="openNew(index)">
       <router-link :to='item.url'>
-        <div class="nav-title" :class="{active:index===page}">
+        <div class="nav-title" :class="{active:index===pageTab}">
           {{ item.title }}
         </div>
       </router-link>
@@ -26,6 +26,7 @@ export default {
   props: ['page'],
   data () {
     return {
+      pageTab: 0,
       arr: [
         {
           title: '活动说明',
@@ -33,7 +34,7 @@ export default {
         },
         {
           title: '创建账户',
-          url: '/user_info'
+          url: '/register'
         },
         {
           title: '登录MyFXBV',
@@ -41,20 +42,21 @@ export default {
         },
         {
           title: '我的',
-          url: '/myMsg'
+          url: '/user'
         }
       ]
     }
   },
   methods: {
     openNew (i) {
+      this.pageTab = i
       this.$emit('openNew', i)
     },
     openPK () {
       const that = this
       that.$router.push({
-        path: '/PKGame',
-        name: 'PKGame'
+        path: '/PK_begin',
+        name: 'PK_begin'
       })
     }
   }

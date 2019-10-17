@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <Myheader :page="idx" @openNew="openNew"></Myheader>
+    <!--<Myheader></Myheader>-->
     <router-view></router-view>
   </div>
 </template>
@@ -11,16 +11,12 @@ import Myheader from './components/header'
 export default {
   data () {
     return {
-      idx: 0
     }
   },
   components: {
     Myheader
   },
   methods: {
-    openNew (i) {
-      this.idx = i
-    }
   }
 }
 </script>

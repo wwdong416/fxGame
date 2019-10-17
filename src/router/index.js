@@ -1,14 +1,16 @@
 import login from '../components/Login'
-import userinfo from '../components/User_info'
+import register from '../components/register'
 import service from '../components/Service'
-import mymsg from '../components/MyMsg'
-import PKGame from '../components/PKGame'
+import user from '../components/user'
+import PKBegin from '../components/PK_begin'
+import rankList from '../components/rankList'
 
 export const routes = [
-  {path: '', name: 'service', component: service},
+  // {path: '', name: 'service', component: service},
   {path: '/Login', name: 'login', component: login},
-  {path: '/User_info', name: 'user_info', component: userinfo},
+  {path: '/Register', name: 'register', component: register},
   {path: '/Service', name: 'service', component: service},
-  {path: '/Mymsg', name: 'myMsg', component: mymsg},
-  {path: '/PKGame', name: 'PKGame', component: PKGame}
+  {path: '/User', name: 'user', component: user},
+  {path: '/PK_begin', name: 'PK_begin', component: PKBegin},
+  {path: '/RankList', name: 'rankList', component: rankList}
 ]
