@@ -1,16 +1,20 @@
 <template>
   <div>
-    <headerTab></headerTab>
     user
   </div>
 </template>
 
 <script>
-import headerTab from './header'
 export default {
   name: 'user',
-  components: {
-    headerTab
+  created () {
+    this.$emit('openNew', 3)
+  },
+  data () {
+    return {
+    }
+  },
+  methods: {
   }
 }
 </script>

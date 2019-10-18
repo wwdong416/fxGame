@@ -1,6 +1,5 @@
 <template>
   <div>
-    <headerTab></headerTab>
     <el-container class="user_info">
       <el-header class="user_info_header"><img src="../assets/img/user_info_title.png" alt=""></el-header>
       <el-main class="user_info_content">
@@ -15,7 +14,7 @@
             <el-upload
               class="avatar-uploader"
               action="https://jsonplaceholder.typicode.com/posts/"
-              :show-file-list="false"
+              :show-file-list="true"
               :on-success="handleAvatarSuccess"
               :before-upload="beforeAvatarUpload">
               <img v-if="imageUrl" :src="imageUrl" class="avatar">
@@ -80,11 +79,10 @@
 </template>
 
 <script>
-import headerTab from './header'
 export default {
   name: 'register',
-  components: {
-    headerTab
+  created () {
+    this.$emit('openNew', 1)
   },
   data () {
     var validatePass2 = (rule, value, callback) => {
@@ -198,15 +196,15 @@ export default {
   .avatar-uploader-icon {
     font-size: 28px;
     color: #8c939d;
-    width: 178px;
-    height: 178px;
-    line-height: 178px;
+    width: 80px;
+    height: 80px;
+    line-height: 80px;
     text-align: center;
   }
 
   .avatar {
-    width: 178px;
-    height: 178px;
+    width: 80px;
+    height: 80px;
     display: block;
   }
 

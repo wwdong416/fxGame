@@ -1,6 +1,5 @@
 <template>
   <div>
-    <headerTab></headerTab>
     <el-container class="user_info">
       <el-header class="user_info_header">{{date}}</el-header>
       <el-main class="user_info_content">
@@ -12,7 +11,6 @@
 </template>
 
 <script>
-import headerTab from './header'
 import gameShow from './PK_show'
 export default {
   name: 'PK_begin',
@@ -23,7 +21,6 @@ export default {
     }
   },
   components: {
-    headerTab,
     gameShow
   },
   mounted () {

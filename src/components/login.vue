@@ -1,23 +1,29 @@
 <template>
   <div>
-    <el-form :model="ruleForm" status-icon :rules="rules" ref="ruleForm"   class="loginFrom">
-      <el-form-item label="用户名/手机号码" prop="userName">
-        <el-input v-model="ruleForm.userName"></el-input>
-      </el-form-item>
-      <el-form-item label="密码" prop="passWord">
-        <el-input type="password" v-model="ruleForm.passWord" autocomplete="off"></el-input>
-      </el-form-item>
-      <el-form-item>
-        <el-button type="primary" @click="submitForm('ruleForm')">登录</el-button>
-        <el-button @click="resetForm('ruleForm')">注册</el-button>
-      </el-form-item>
-    </el-form>
+    <el-container class="loginFrom">
+      <el-header style="text-align: center;font-weight: bold;font-size: 40px">请登录FXBV系统</el-header>
+      <el-main>  <el-form :model="ruleForm" status-icon :rules="rules" ref="ruleForm"  style="width: 400px;margin: 30px auto">
+        <el-form-item label="用户名/手机号码" prop="userName">
+          <el-input v-model="ruleForm.userName"></el-input>
+        </el-form-item>
+        <el-form-item label="密码" prop="passWord">
+          <el-input type="password" v-model="ruleForm.passWord" autocomplete="off"></el-input>
+        </el-form-item>
+        <el-form-item>
+          <el-button type="primary" @click="submitForm('ruleForm')">登录</el-button>
+          <el-button @click="resetForm('ruleForm')">注册</el-button>
+        </el-form-item>
+      </el-form></el-main>
+    </el-container>
   </div>
 </template>
 
 <script>
 export default {
   name: 'login',
+  created () {
+    this.$emit('openNew', 2)
+  },
   data () {
     return {
       ruleForm: {
@@ -61,8 +67,8 @@ export default {
 
 <style scoped>
 .loginFrom{
-  width: 400px;
-  margin: 100px auto;
+  width: 1100px;
+  margin: 60px auto;
   background-color: #fff;
   padding: 80px;
   border-radius: 50px;

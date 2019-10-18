@@ -1,6 +1,5 @@
 <template>
   <div>
-    <headerTab></headerTab>
     <el-container class="user_info">
       <el-header class="mt40 t_a_c user_info_header">
         <img src="../assets/img/rankList.png" alt="">
@@ -28,12 +27,8 @@
 </template>
 
 <script>
-import headerTab from './header'
 export default {
   name: 'rankList',
-  components: {
-    headerTab
-  },
   data () {
     return {
       tableData: [{
